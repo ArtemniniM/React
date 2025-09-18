@@ -219,3 +219,141 @@ import "./App.css";
 //   return <div>{res}</div>;
 // }
 // export default App;
+
+// 15. На входе массив объектов { city: string, population: number }. Отобразить города, где
+// население больше 1 млн.
+
+// function App() {
+//   const arr = [
+//     { city: "Minsk", population: 10000000 },
+//     { city: "Gomel", population: 999999 },
+//     { city: "Brest", population: 14000000 },
+//   ];
+//   const res = arr.map((el) => {
+//     if (el.population > 1000000) {
+//       return (
+//         <div>
+//           <h1>{el.city}</h1>
+//         </div>
+//       );
+//     }
+//   });
+//   return <div>{res}</div>;
+// }
+// export default App;
+
+// 16. На входе массив чисел. Отобразить числа, которые делятся на 3 без остатка, в теге <span>.
+
+// function App() {
+//   const arr = [1, 2, 3, 6, 9];
+//   const res = arr.map((el) => {
+//     if (el % 3 === 0) {
+//       return <span>{el}</span>;
+//     }
+//   });
+//   return <spa>{res}</spa>;
+// }
+// export default App;
+
+// 17. На входе массив строк. Если строка содержит слово "JS" — отобразить её, иначе пропустить.
+
+// function App() {
+//   const arr = ["app.JS", "index.JS", "return"];
+//   const res = arr.map((el) => {
+//     if (el.includes("JS")) return <div>{el}</div>;
+//   });
+//   return res;
+// }
+// export default App;
+
+// 18. На входе массив объектов { task: string, completed: boolean }. Отобразить все задачи.
+// Выполненные — зачёркнутыми.
+
+// function App() {
+//   const arr = [
+//     { task: "Сделать форму регистрации", completed: false },
+//     { task: "Сверстать карточку товара", completed: true },
+//     { task: "Добавить валидацию", completed: true },
+//   ];
+//   const res = arr.map((el) => {
+//     return (
+//       <div>
+//         <h1 style={{ textDecoration: el.completed ? "line-through" : "none" }}>{el.task}</h1>
+//       </div>
+//     );
+//   });
+//   return <div>{res}</div>;
+// }
+// export default App;
+
+// 19. На входе массив чисел. Каждое число возвести в куб и отобразить на странице в <h4>.
+
+// function App() {
+//   const arr = [1, 2, 3, 6, 9];
+//   const res = arr.map((el) => {
+//     return <h4>{Math.pow(el, 3)}</h4>;
+//   });
+//   return <div>{res}</div>;
+// }
+// export default App;
+
+// 20.На входе массив строк. Строки могут быть в разном регистре. Отобразить только уникальные
+// строки в нижнем регистре, отсортированные по алфавиту
+
+// function App() {
+//   const arr = ["Apple", "banana", "BANANA", "Orange", "apple", "orange"];
+//   const uniqueSorted = Array.from(new Set(arr.map((str) => str.toLowerCase()))).sort();
+//   return (
+//     <div>
+//       <ul>
+//         {uniqueSorted.map((str) => (
+//           <li>{str}</li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// }
+// export default App;
+
+// 21. На входе массив чисел. Разбить их на два массива: положительные и отрицательные.
+// Отобразить оба списка на странице.
+
+// function App() {
+//   const arr = [-1, -2, 4, -6, 7];
+//   const plus = arr.filter((el) => el > 0);
+//   const minus = arr.filter((el) => el < 0);
+//   return (
+//     <div>
+//       <ul>
+//         {plus.map((el) => (
+//           <li>{el}</li>
+//         ))}
+//       </ul>
+//       <ul>
+//         {minus.map((el) => (
+//           <li>{el}</li>
+//         ))}
+//       </ul>
+//     </div>
+//   );
+// }
+// export default App;
+
+// 22. На входе массив дат (строк). Отобразить ближайшую к сегодняшнему дню дату.
+// Использовать new Date() и сравнение по времени.
+
+// function App() {
+//   const arr = ["2023-01-01", "2020-09-08", "2025-03-25"];
+//   const today = new Date();
+//   const closestDate = arr.reduce((prev, curr) => {
+//     const prevDiff = Math.abs(new Date(prev) - today);
+//     const currDiff = Math.abs(new Date(curr) - today);
+//     return currDiff < prevDiff ? curr : prev;
+//   });
+//   return (
+//     <div>
+//       <p>{closestDate}</p>
+//     </div>
+//   );
+// }
+// export default App;
