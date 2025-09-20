@@ -1,0 +1,69 @@
+.footer {
+  background-color: #f6f5f4;
+  padding: 40px 0;
+  .footer-wrap {
+    margin: 0 auto;
+    max-width: 1180px;
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .top-nav {
+        display: flex;
+        gap: 30px;
+        p {
+          font-family: Montserrat;
+          font-weight: 600;
+          font-size: 14px;
+          color: #757575;
+        }
+      }
+    }
+    .line {
+      border: 1px solid #e0e0e0;
+      margin: 20px 0;
+    }
+    .bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .bottom-nav {
+        display: flex;
+        gap: 30px;
+        .pig {
+          background-image: url(../../assets/pig.png);
+          background-size: cover;
+          background-repeat: no-repeat;
+          width: 30px;
+          height: 24px;
+        }
+        .gt {
+          background-image: url(../../assets/GT.png);
+          background-size: cover;
+          background-repeat: no-repeat;
+          width: 30px;
+          height: 24px;
+        }
+        .youtube {
+          background-image: url(../../assets/youtube.png);
+          background-size: contain;
+          background-repeat: no-repeat;
+          width: 30px;
+          height: 24px;
+        }
+      }
+      .bottom-info {
+        font-family: Montserrat;
+        font-weight: 600;
+        font-size: 12px;
+        color: #757575;
+        a {
+          font-family: Montserrat;
+          font-weight: 600;
+          font-size: 12px;
+          color: #757575;
+        }
+      }
+    }
+  }
+}

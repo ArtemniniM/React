@@ -1,0 +1,44 @@
+.header-login {
+  padding-bottom: 82px;
+  .wrapper-log {
+    max-width: 1180px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo {
+      font-family: Montserrat;
+      font-weight: 600;
+      font-style: SemiBold;
+      font-size: 16px;
+      color: #000000;
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      .login {
+        font-family: Montserrat;
+        font-weight: 700;
+        font-size: 16px;
+        color: #000000;
+        text-decoration: none;
+      }
+      .sign {
+        border-radius: 14px;
+        width: 103px;
+        height: 43px;
+        border: none;
+        background-color: #2b788b;
+        font-family: Montserrat;
+        font-weight: 700;
+        font-size: 16px;
+        color: #ffffff;
+      }
+    }
+  }
+  .log-line {
+    border: 1px solid #e0e0e0;
+    margin-top: 40px;
+  }
+}

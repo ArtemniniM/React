@@ -1,0 +1,29 @@
+.header-min {
+  padding-top: 25px;
+  .wrapper-min {
+    max-width: 1180px;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo {
+      font-family: Montserrat;
+      font-weight: 600;
+      font-style: SemiBold;
+      font-size: 16px;
+      color: #000000;
+    }
+
+    .login {
+      font-family: Montserrat;
+      font-weight: 700;
+      font-size: 16px;
+      color: #000000;
+      text-decoration: none;
+    }
+  }
+  .min-line {
+    border: 1px solid #e0e0e0;
+    margin-top: 25px;
+  }
+}
