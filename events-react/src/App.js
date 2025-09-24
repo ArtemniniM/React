@@ -490,3 +490,109 @@ import "./App.css";
 //   );
 // }
 // export default App;
+
+// HOMEWORK!!!!!!!!!!!!!!!!!!!!
+
+// Переключение отображения текста. Кнопка переключает состояние отображения текста (показать/скрыть).
+// По умолчанию текст скрыт
+// Клик по кнопке — текст отображается
+// Повторный клик — текст снова скрыт
+
+// import { useState } from "react";
+
+// function App() {
+//   const [a, b] = useState(false);
+//   return (
+//     <>
+//       <div style={{ display: a ? "block" : "none" }}>
+//         <p>hi</p>
+//         <p>hi</p>
+//         <p>hi</p>
+//       </div>
+//       <button
+//         onClick={() => {
+//           b(!a);
+//         }}
+//       >
+//         click
+//       </button>
+//     </>
+//   );
+// }
+// export default App;
+
+// Поле ввода сохраняет введённый текст и отображает его ниже в h1.
+// Ввод "hello" — отображается в h1 "hello"
+
+// import { useState } from "react";
+
+// function App() {
+//   const [a, b] = useState("");
+//   return (
+//     <>
+//       <input
+//         onChange={(e) => {
+//           b(e.target.value);
+//         }}
+//         value={a}
+//       />
+//       <h1>{a}</h1>
+//     </>
+//   );
+// }
+// export default App;
+
+// Кнопка с иконкой "лайк" увеличивает счётчик лайков.
+// Начальное значение — 0
+// Один клик — 1
+// Три клика — 3
+
+// import { useState } from "react";
+
+// function App() {
+//   const [a, b] = useState(0);
+//   return (
+//     <>
+//       <h2>{a}</h2>
+//       <button
+//         onClick={() => {
+//           b(a + 1);
+//         }}
+//       >
+//         like
+//       </button>
+//     </>
+//   );
+// }
+// export default App;
+
+// После заполнения инпута и клика на кнопку отображается "Отправлено: [значение]".
+// Ввод "email@example.com" → клик → отображается "Отправлено: email@example.com"
+// Очистить и ввести "hello@world.com" → клик → "Отправлено: hello@world.com"
+
+// import { useState } from "react";
+
+// function App() {
+//   const [a, b] = useState(false);
+//   const [c, d] = useState("");
+
+//   return (
+//     <>
+//       <input
+//         onChange={(e) => {
+//           d(e.target.value);
+//           b(false);
+//         }}
+//       />
+//       <button
+//         onClick={() => {
+//           b(true);
+//         }}
+//       >
+//         Отправить
+//       </button>
+//       <h1 style={{ display: a ? "block" : "none" }}>Отправлено:{c}</h1>
+//     </>
+//   );
+// }
+// export default App;
