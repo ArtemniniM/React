@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import "./App.css";
 
 // 1. Сделать кнопку, которая при клике показывает alert("Привет!").
@@ -592,6 +593,329 @@ import "./App.css";
 //         Отправить
 //       </button>
 //       <h1 style={{ display: a ? "block" : "none" }}>Отправлено:{c}</h1>
+//     </>
+//   );
+// }
+// export default App;
+
+// 1. На странице есть кнопка и текст. При каждом нажатии на кнопку число в тексте
+// увеличивается на один. useState — хранит число (количество кликов).
+
+// import { useState } from "react";
+// import Button from "@mui/material/Button";
+
+// function App() {
+//   const [value, setValue] = useState(0);
+//   return (
+//     <>
+//       <h1>{value}</h1>
+//       <Button onClick={() => setValue(value + 1)} variant="contained">
+//         click
+//       </Button>
+//     </>
+//   );
+// }
+// export default App;
+
+// 2. На странице есть кнопка и текст. При нажатии на кнопку текст меняется с «Привет» на
+// «Пока» и обратно. useState — хранит строку («Привет» или «Пока»).
+
+// import { useState } from "react";
+// import Button from "@mui/material/Button";
+
+// function App() {
+//   const [value, setValue] = useState("Привет");
+
+//   return (
+//     <>
+//       <h1>{value}</h1>
+//       <Button onClick={() => setValue((prev) => (prev === "Привет" ? "Пока" : "Привет"))} variant="contained">
+//         click
+//       </Button>
+//     </>
+//   );
+// }
+// export default App;
+
+// 3. На странице есть поле для ввода текста и абзац. Всё, что вводится в поле, сразу
+// отображается в абзаце. useState — хранит строку с текстом из поля.
+
+// import { useState } from "react";
+// import TextField from "@mui/material/TextField";
+
+// function App() {
+//   const [value, setValue] = useState("");
+
+//   return (
+//     <>
+//       <TextField onChange={(e) => setValue(e.target.value)} id="outlined-basic" label="Outlined" variant="outlined" />
+//       <p>{value}</p>
+//     </>
+//   );
+// }
+// export default App;
+
+// 4. На странице есть кнопка и абзац с текстом. При нажатии на кнопку текст скрывается, при
+// повторном нажатии снова появляется. useState — хранит логическое значение (true/false).
+
+// import { useState } from "react";
+// import Button from "@mui/material/Button";
+
+// function App() {
+//   const [value, setValue] = useState(false);
+
+//   return (
+//     <>
+//       <Button onClick={() => setValue((prev) => !prev)} variant="contained">
+//         click
+//       </Button>
+//       <p style={{ display: value ? "block" : "none" }}>apple</p>
+//     </>
+//   );
+// }
+// export default App;
+
+// 5. На странице есть кнопка и абзац. При нажатии на кнопку цвет текста меняется (например,
+//    с чёрного на красный). useState — хранит текущий цвет текста.
+
+// import { useState } from "react";
+// import Button from "@mui/material/Button";
+
+// function App() {
+//   const [value, setValue] = useState("black");
+
+//   const handleClick = () => {
+//     setValue(prev => (prev === "black" ? "red" : "black"));
+//   };
+
+//   return (
+//     <>
+//       <Button onClick={handleClick} variant="contained">
+//         click
+//       </Button>
+//       <p style={{ color: value }}>apple</p>
+//     </>
+//   );
+// }
+
+// export default App;
+
+// 6. На странице есть кнопка и список. При нажатии в список добавляется новый элемент с
+// текстом NEW. useState — хранит массив строк.
+
+// import { useState } from "react";
+// import Button from "@mui/material/Button";
+
+// function App() {
+//   const [value, setValue] = useState(["orange", "apple", "lemon"]);
+
+//   return (
+//     <>
+//       <Button onClick={() => setValue([...value, "NEW"])} variant="contained">
+//         click
+//       </Button>
+//       <ul>
+//         {value.map((el) => (
+//           <li>{el}</li>
+//         ))}
+//       </ul>
+//     </>
+//   );
+// }
+// export default App;
+
+// 7. На странице есть список и кнопка. При нажатии удаляется последний элемент из списка.
+//  useState — хранит массив элементов.
+
+// import { useState } from "react";
+// import Button from "@mui/material/Button";
+
+// function App() {
+//   const [value, setValue] = useState(["orange", "apple", "lemon"]);
+
+//   return (
+//     <>
+//       <Button onClick={() => setValue(value.slice(0, -1))} variant="contained">
+//         click
+//       </Button>
+//       <ul>
+//         {value.map((el) => (
+//           <li>{el}</li>
+//         ))}
+//       </ul>
+//     </>
+//   );
+// }
+// export default App;
+
+// 8. На странице есть картинка и две кнопки («Следующая» и «Предыдущая»). Кнопки
+// переключают картинки по массиву (5 шт). useState — хранит индекс текущей картинки.
+
+// import Img1 from "./assents/1.png";
+// import Img2 from "./assents/2.png";
+// import Img3 from "./assents/3.png";
+// import Img4 from "./assents/4.png";
+// import { useState } from "react";
+// import Button from "@mui/material/Button";
+
+// function App() {
+//   const arr = [Img1, Img2, Img3, Img4];
+//   const [value, setValue] = useState(0);
+//   return (
+//     <>
+//       <Button
+//         onClick={() => {
+//           if (value === 0) {
+//             return;
+//           }
+//           setValue(value - 1);
+//         }}
+//         variant="contained"
+//       >
+//         Предыдущая
+//       </Button>
+//       <img style={{ width: 300 }} src={arr[value]} />
+//       <Button
+//         onClick={() => {
+//           if (value === arr.length - 1) {
+//             return;
+//           }
+//           setValue(value + 1);
+//         }}
+//         variant="contained"
+//       >
+//         Следующая
+//       </Button>
+//     </>
+//   );
+// }
+// export default App;
+
+// USEEFFECT!!!!!!!!!!!!!
+
+// 1. Сделай компонент со счётчиком. Каждый раз, когда пользователь нажимает кнопку, значение
+// счётчика должно отобрадаться в console.log внутри useEffeect
+
+// function App() {
+//   const [val, setVal] = useState(0);
+//   useEffect(() => {
+//     console.log(val);
+//   }, [val]);
+//   return (
+//     <>
+//       <button
+//         onClick={() => {
+//           setVal(val + 1);
+//         }}
+//       >
+//         click
+//       </button>
+//     </>
+//   );
+// }
+// export default App;
+
+// 2. Сделай компонент, который запускает таймер (setInterval) и каждую секунду увеличивает число на
+// экране.
+
+// function App() {
+//   const [val, setVal] = useState(0);
+//   useEffect(() => {
+//     const result = setInterval(() => {
+//       setVal(Number(val) + 1);
+//     }, 1000);
+//     return () => clearInterval(result);
+//   }, [val]);
+
+//   return (
+//     <>
+//       <h1>{val}</h1>
+//     </>
+//   );
+// }
+// export default App;
+
+// 3. При монтировании компонента сделай fetch на какой-нибудь API (например,
+//   https://jsonplaceholder.typicode.com/posts/1) и выведи заголовок поста.
+
+// function App() {
+//   const [title, setTitle] = useState(0);
+
+//   async function fetchData() {
+//     try {
+//       const response = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+//       const data = await response.json();
+//       setTitle(data.title);
+//     } catch (error) {
+//       console.error(error.message);
+//     }
+//   }
+//   useEffect(() => fetchData(), []);
+
+//   return (
+//     <>
+//       <div>{title}</div>
+//     </>
+//   );
+// }
+// export default App;
+
+// 4. При монтировании сделай fetch на https://jsonplaceholder.typicode.com/users и отобрази список имён
+// пользователей (name).
+
+// function App() {
+//   const [name, setName] = useState([]);
+
+//   async function fetchData() {
+//     try {
+//       const response = await fetch("https://jsonplaceholder.typicode.com/users");
+//       const data = await response.json();
+//       setName(data);
+//     } catch (error) {
+//       console.error(error.message);
+//     }
+//   }
+//   useEffect(() => fetchData(), []);
+
+//   return (
+//     <>
+//       <div>
+//         {name.map((el) => (
+//           <p>{el.name}</p>
+//         ))}
+//       </div>
+//     </>
+//   );
+// }
+// export default App;
+
+// 5. Сделай компонент, который каждые 10 секунд загружает случайный пост
+// (https://jsonplaceholder.typicode.com/posts/{случайное число}) и отображает его заголовок.
+
+// function App() {
+//   const [post, setPost] = useState([]);
+
+//   async function fetchData() {
+//     try {
+//       const num = Math.floor(Math.random() * 100) + 1;
+//       const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${num}`);
+//       const data = await response.json();
+//       setPost(data);
+//     } catch (error) {
+//       console.error(error.message);
+//     }
+//   }
+
+//   useEffect(() => {
+//     const interval = setInterval(fetchData, 10000);
+//     return () => clearInterval(interval);
+//   }, []);
+
+//   return (
+//     <>
+//       <div>
+//         <p>{post.title}</p>
+//       </div>
 //     </>
 //   );
 // }
