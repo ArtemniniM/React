@@ -920,3 +920,125 @@ import "./App.css";
 //   );
 // }
 // export default App;
+
+// AXIOS!!!!!!!!!!!!!!!!!!!!!
+
+// 1. При первичном рендеринге загрузите данные пользователя с https://jsonplaceholder.typicode.com/users/1 .
+// Отобразите информацию о пользователе в виде карточки. Внутри useState хранится объект пользователя с
+// сервера. Обработайте возможные ошибки при обращении к серверу.
+
+// import axios from "axios";
+
+// function App() {
+//   const [user, setUser] = useState({});
+
+//   async function userData() {
+//     const response = await axios.get("https://jsonplaceholder.typicode.com/users/1");
+//     setUser(response.data);
+//   }
+
+//   useEffect(() => {
+//     userData();
+//   }, []);
+
+//   return (
+//     <>
+//       <ul>
+//         {Object.entries(user).map(([key, value]) => (
+//           <li key={key}>
+//             <strong>{key}:</strong> {typeof value === "object" ? JSON.stringify(value) : value}
+//           </li>
+//         ))}
+//       </ul>
+//     </>
+//   );
+// }
+// export default App;
+
+// 2. При первичном рендеринге загрузите список постов с https://jsonplaceholder.typicode.com/posts .
+// // Отобразите первые 10 постов в виде списка. Внутри useState хранится массив постов с сервера.
+
+// import axios from "axios";
+
+// function App() {
+//   const [post, setPost] = useState([]);
+
+//   async function postData() {
+//     const response = await axios.get("https://jsonplaceholder.typicode.com/posts");
+//     setPost(response.data);
+//   }
+
+//   useEffect(() => {
+//     postData();
+//   }, []);
+
+//   return (
+//     <>
+//       {post
+//         .filter((el, index) => index < 10)
+//         .map((el) => (
+//           <p>{el.title}</p>
+//         ))}
+//     </>
+//   );
+// }
+// export default App;
+
+// 3. На странице должны отображаться инпут и div c ответом сервера. При первичном рендеринге отправить
+// запрос на https://jsonplaceholder.typicode.com/albums?title_like=${query}. При вводе данных в инпут повторно
+// отправляйте запрос. Внутри useState хранится массив найденных альбомов. Отобразите результаты поиска
+// в виде сетки карточек. (В текущей задаче useEffect вызывает асинхронную функцию не только при
+// первичном рендеринге, но и при изменении состояния значения инпута)
+
+// import axios from "axios";
+
+// function App() {
+//   const [albums, setAlbums] = useState([]);
+//   const [query, setQuery] = useState("");
+
+//   async function post() {
+//     const response = await axios.get(`https://jsonplaceholder.typicode.com/albums?title_like=${query}`);
+//     setAlbums(response.data);
+//   }
+
+//   useEffect(() => {
+//     post();
+//   }, [query]);
+
+//   return (
+//     <>
+//       <input type="text" onChange={(e) => setQuery(e.target.value)} />
+//       <div>
+//         {albums.map((el) => (
+//           <p>{el.title}</p>
+//         ))}
+//       </div>
+//     </>
+//   );
+// }
+// export default App;
+
+// 4. При первичном рендеринге отправить GET запрос по адресу https://api.ipify.org/?format=json . Результат
+// сервера отобразить в заголовок
+
+// import axios from "axios";
+
+// function App() {
+//   const [ip, setIp] = useState("");
+
+//   async function post() {
+//     const response = await axios.get("https://api.ipify.org/?format=json");
+//     setIp(response.data.ip);
+//   }
+
+//   useEffect(() => {
+//     post();
+//   }, []);
+
+//   return (
+//     <>
+//       <p>{ip}</p>
+//     </>
+//   );
+// }
+// export default App;
