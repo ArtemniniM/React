@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "./App.css";
 
 // 1. Сделать кнопку, которая при клике показывает alert("Привет!").
@@ -1042,3 +1042,286 @@ import "./App.css";
 //   );
 // }
 // export default App;
+
+// USESTATE!!!!!!!!!!!!!!!!!
+
+// 1. Создайте компонент, который предоставляет две кнопки: "Показать" и "Скрыть". При
+// нажатии на "Показать" отображается текст, а при нажатии на "Скрыть" текст скрывается.
+
+// function App() {
+//   const [show, setShow] = useState(false);
+//   return (
+//     <>
+//       {show ? <p>Текст отображается</p> : null}
+//       <button onClick={() => setShow(true)}>Показать</button>
+//       <button onClick={() => setShow(false)}>Скрыть</button>
+//     </>
+//   );
+// }
+// export default App;
+
+// 2. Создайте компонент выбора цвета, который включает 4шт. – button (в качестве textContent:
+//     red, green, blue, yellow), 1шт. – h1 и позволяет пользователю выбирать цвет. По клику на
+//     соответствующую кнопку цвет заголовка должен меняться.
+
+// function App() {
+//   const [color, setColor] = useState("");
+//   const colors = ["red", "green", "blue", "yellow"];
+//   return (
+//     <>
+//       <h1 style={{ color }}>Цвет текста: {color || "не выбран"}</h1>
+//       {colors.map((c) => (
+//         <button key={c} onClick={() => setColor(c)}>
+//           {c}
+//         </button>
+//       ))}
+//     </>
+//   );
+// }
+// export default App;
+
+// 3. Создайте компонент по клику на кнопку проверить значение введенного поля для ввода
+// регулярным выражением на почту. В console.log отобразить true если введенная строка
+// удовлетворяет регулярному выражению и false в противном случае.
+
+// function App() {
+//   const [value, setValue] = useState("");
+
+//   return (
+//     <>
+//       <button
+//         onClick={() => {
+//           console.log(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value));
+//         }}
+//       >
+//         click
+//       </button>
+//       <input onChange={(e) => setValue(e.target.value)} value={value} type="post" />
+//     </>
+//   );
+// }
+// export default App;
+
+// 4. Отобразите список элементов массива, кнопку и поле для ввода. По клику на кнопку брать
+// значение инпута и добавлять в конец списка массива.
+
+// function App() {
+//   const [value, setValue] = useState("");
+//   const [array, setArray] = useState([]);
+//   return (
+//     <>
+//       <button onClick={() => setArray((prevArray) => [...prevArray, value])}>click</button>
+//       <input onChange={(e) => setValue(e.target.value)} value={value} type="text" />
+//       <ul>
+//         {array.map((item, index) => (
+//           <li key={index}>{item}</li>
+//         ))}
+//       </ul>
+//     </>
+//   );
+// }
+// export default App;
+
+// useEffect!!!!!!!!!!!!!!!!!!
+
+// 1. Создайте компонент счетчика, который увеличивает значение счетчика на 1 каждую секунду
+// с использованием useEffect.
+
+// function Effect() {
+//   const [value, setValue] = useState(0);
+
+//   useEffect(() => {
+//     const interval = setInterval(() => {
+//       setValue((prev) => prev + 1);
+//     }, 1000);
+
+//     return () => clearInterval(interval);
+//   }, []);
+
+//   return (
+//     <>
+//       <h2>{value}</h2>
+//     </>
+//   );
+// }
+
+// export default Effect;
+
+// 2. Создайте компонент, который выполняет запрос к API https://api.ipify.org/?format=json и
+// отображает полученные данные в заголовок.
+
+// import axios from "axios";
+
+// function Effect() {
+//   const [value, setValue] = useState("");
+
+//   useEffect(() => {
+//     async function promise() {
+//       const response = await axios.get("https://api.ipify.org/?format=json");
+//       setValue(response.data.ip);
+//     }
+//     promise();
+//   }, []);
+
+//   return (
+//     <>
+//       <h2>{value}</h2>
+//     </>
+//   );
+// }
+
+// export default Effect;
+
+// 3. Создайте компонент, который отображает текущее время и обновляет его каждую секунду
+
+// function Clock() {
+//   const [time, setTime] = useState(new Date());
+
+//   useEffect(() => {
+//     const timer = setInterval(() => {
+//       setTime(new Date());
+//     }, 1000);
+
+//     return () => clearInterval(timer);
+//   }, []);
+
+//   return <h2>{time.toLocaleTimeString()}</h2>;
+// }
+
+// export default Clock;
+
+// 4. Создайте компонент, который при первичном рендеринге отправляет запрос к API
+// http://numbersapi.com/:id с рандомно сгенерированным числом и отображает результат в
+// консоль.
+
+// function Effect() {
+//   const id = Math.round(Math.random() * 100);
+
+//   useEffect(() => {
+//     async function fetchFact() {
+//       try {
+//         const response = await fetch(`https://cors-anywhere.herokuapp.com/http://numbersapi.com/${id}`);
+//         const text = await response.text();
+//         console.log(`Факт о числе ${id}:`, text);
+//       } catch (error) {
+//         console.error("Ошибка при запросе:", error);
+//       }
+//     }
+
+//     fetchFact();
+//   }, []);
+
+//   return <h2>Факт загружен в консоль</h2>;
+// }
+
+// export default Effect;
+
+// USEREF!!!!!!!!!!!!!!!!
+
+// 1. Создайте компонент, который по клику на кнопку меняет цвет текста на красный
+
+// function App() {
+//   const refColor = useRef();
+//   return (
+//     <>
+//       <p ref={refColor}>dg kjfm</p>
+//       <button onClick={() => (refColor.current.style = "color:red")}>click</button>
+//     </>
+//   );
+// }
+// export default App;
+
+// 2. Создайте компонент, который по клику на кнопку рандомно у h1 меняет цвет текста
+
+// function App() {
+//   const refColor = useRef();
+//   return (
+//     <>
+//       <h1 ref={refColor}>fsjkd</h1>
+//       <button onClick={() => (refColor.current.style = `color: #${Math.round(Math.random() * 999)}`)}>click</button>
+//     </>
+//   );
+// }
+// export default App;
+
+// 3. Создайте компонент, который при каждом клике на кнопку увеличивает размер шрифта
+// текста в элементе на странице.
+
+// function App() {
+//   const refFont = useRef();
+//   return (
+//     <>
+//       <h1 style={{ fontSize: "40px" }} ref={refFont}>
+//         fsjkd
+//       </h1>
+//       <button onClick={() => (refFont.current.style = `font-size: ${parseInt(refFont.current.style.fontSize) + 10}px`)}>
+//         click
+//       </button>
+//     </>
+//   );
+// }
+// export default App;
+
+// 4. Создайте компонент, который при фокусе на текстовом поле добавляет background
+// (onFocus, onBlur)
+
+// function App() {
+//   const refBack = useRef();
+//   return (
+//     <>
+//       <input
+//         ref={refBack}
+//         onFocus={() => {
+//           refBack.current.style = "background-color:red";
+//         }}
+//         onBlur={() => {
+//           refBack.current.style = "background-color:white";
+//         }}
+//       />
+//     </>
+//   );
+// }
+// export default App;
+
+// 5. Реализуйте компонент, который отслеживает количество кликов на кнопку с помощью
+// useRef и выводит это число в консоль при каждом клике.
+
+// function App() {
+//   const counter = useRef();
+//   return (
+//     <>
+//       <h1 ref={counter}>0</h1>
+//       <button
+//         onClick={() => {
+//           counter.current.textContent = +counter.current.textContent + 1;
+//         }}
+//       >
+//         click
+//       </button>
+//     </>
+//   );
+// }
+// export default App;
+
+// 6. Разработайте компонент для реализации "подсказок" (tooltips). При наведении на элемент
+// интерфейса (например, кнопку), компонент отображает подсказку с текстом. (onMouseEnter
+// срабатывает, когда курсор мыши входит в область элемента. onMouseLeave срабатывает,
+// когда курсор мыши покидает область элемента.)
+
+// function Tooltips() {
+//   const tool = useRef();
+//   return (
+//     <>
+//       <h2 style={{ display: "none" }} ref={tool}>
+//         подсказкa
+//       </h2>
+//       <button
+//         onMouseEnter={() => (tool.current.style = "display:block")}
+//         onMouseLeave={() => (tool.current.style = "display:none")}
+//       >
+//         mouse
+//       </button>
+//     </>
+//   );
+// }
+// export default Tooltips;
