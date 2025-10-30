@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useReducer } from "react";
 import "./App.css";
 
 // 1. Сделать кнопку, которая при клике показывает alert("Привет!").
@@ -1325,3 +1325,235 @@ import "./App.css";
 //   );
 // }
 // export default Tooltips;
+
+import Box from "./context/index";
+import Component from "./page/Component";
+
+// 1. Используйте useContext, чтобы сохранять данные о текущем пользователе. Отобразите эту
+// информацию в компоненте, используя контекст.
+
+// function App() {
+//   const currentUser = {
+//     name: "Артём",
+//     email: "mail@example.com",
+//     role: "Full-stack developer",
+//   };
+//   return (
+//     <Box.Provider value={currentUser}>
+//       <Component />
+//     </Box.Provider>
+//   );
+// }
+// export default App;
+
+// 2. Создайте приложение, где пользователь сможет выбирать язык интерфейса (например,
+//     английский или испанский). Используйте useContext для сохранения текущего выбранного
+//     языка и перевода текста в выбранный язык в компонентах.
+
+// function App() {
+//   const [language, setLanguage] = useState("en");
+//   const greetings = {
+//     en: "hello",
+//     sp: "hola",
+//     ch: "nihao",
+//   };
+//   const objLang = {
+//     language: language,
+//     setLanguage: setLanguage,
+//     greetings: greetings,
+//   };
+//   return (
+//     <Box.Provider value={objLang}>
+//       <Component />
+//     </Box.Provider>
+//   );
+// }
+// export default App;
+
+// 3. Разработайте приложение для отображения текущей погоды. Используйте useContext,
+// чтобы хранить информацию о погоде (температура, влажность, скорость ветра и т. д.). В
+// компоненте отобразите эту информацию о погоде.
+
+// function App() {
+//   const [weather, setWeather] = useState({
+//     temperature: 18,
+//     humidity: 65,
+//     windSpeed: 5.2,
+//     condition: "Облачно",
+//   });
+//   return (
+//     <Box.Provider value={weather}>
+//       <Component />
+//     </Box.Provider>
+//   );
+// }
+// export default App;
+
+// 4. Разработайте простое приложение для переключения между светлой и темной темами.
+// Используйте useContext, чтобы хранить информацию о текущей теме (светлая или темная).
+// В компоненте отобразите интерфейс, который позволяет пользователю переключаться
+// между темами.
+
+// function App() {
+//   const [color, setColor] = useState(false);
+
+//   const obj = {
+//     color: color,
+//     setColor: setColor,
+//   };
+//   return (
+//     <Box.Provider value={obj}>
+//       <Component />
+//     </Box.Provider>
+//   );
+// }
+// export default App;
+
+// !!!!!!!!!useReducer
+
+// 1. Создайте компонент счетчика, который может увеличивать, уменьшать, сбрасывать
+// значение при нажатии на соответствующие кнопки.
+
+// const reducer = (state, param) => {
+//   switch (param) {
+//     case "увеличивать":
+//       return state + 1;
+//     case "уменьшать":
+//       return state - 1;
+//     case "сбрасывать":
+//       return 0;
+//   }
+// };
+
+// function Counter() {
+//   const [count, setCount] = useReducer(reducer, 0);
+
+//   return (
+//     <div>
+//       <h1>{count}</h1>
+//       <button onClick={() => setCount("увеличивать")}>увеличивать</button>
+//       <button onClick={() => setCount("уменьшать")}>уменьшать</button>
+//       <button onClick={() => setCount("сбрасывать")}>сбрасывать</button>
+//     </div>
+//   );
+// }
+
+// export default Counter;
+
+// 2. Создайте компонент с текстом и кнопкой. Текст включает 2 состояния «on» и «off». По клику
+// на кнопку текст меняется на противоположный
+
+// function reducer(state, param) {
+//   switch (param) {
+//     case "on":
+//       return (state = true);
+//     case "off":
+//       return (state = false);
+//   }
+// }
+
+// function App() {
+//   const [state, setState] = useReducer(reducer, true);
+//   return (
+//     <>
+//       {state ? <h1>apple</h1> : null}
+//       <button onClick={() => setState(state ? "off" : "on")}>click</button>
+//     </>
+//   );
+// }
+// export default App;
+
+// 3. Создайте компонент отслеживающий вводимое значение в input. Результат отображать в
+// h1
+
+// function reducer(value, param) {
+//   switch (param.action) {
+//     case "add":
+//       return param.input;
+//   }
+// }
+
+// function App() {
+//   const [val, setVal] = useReducer(reducer, "");
+//   return (
+//     <>
+//       <h1>{val}</h1>
+//       <input
+//         onChange={(e) => {
+//           setVal({ action: "add", input: e.target.value });
+//         }}
+//       />
+//     </>
+//   );
+// }
+// export default App;
+
+// 4. Вам предоставлен массив цветов, таких как red, blue, purple, pink. При клике на кнопку ваша
+// задача изменить цвет заголовка на цвет, соответствующий нажатой кнопке.
+
+// function reducer(state, param) {
+//   switch (param) {
+//     case "red":
+//       return "red";
+//     case "blue":
+//       return "blue";
+//     case "purple":
+//       return "purple";
+//     case "pink":
+//       return "pink";
+//   }
+// }
+
+// function App() {
+//   const [color, setColor] = useReducer(reducer, "black");
+
+//   return (
+//     <>
+//       <h1 style={{ color: color }}>TEXT</h1>
+//       <button onClick={() => setColor("red")}>red</button>
+//       <button onClick={() => setColor("blue")}>blue</button>
+//       <button onClick={() => setColor("purple")}>purple</button>
+//       <button onClick={() => setColor("pink")}>pink</button>
+//     </>
+//   );
+// }
+// export default App;
+
+// 5. Создайте компонент отслеживающий вводимое значение 2 input. Посчитать сумму 2 input.
+// По клику на кнопку отображать результат в консоль
+
+function reducer1(elem, param) {
+  switch (param.action) {
+    case "add":
+      return param.value;
+  }
+}
+
+function reducer2(elem, param) {
+  switch (param.action) {
+    case "add":
+      return param.value;
+  }
+}
+
+function App() {
+  const [count1, setCount1] = useReducer(reducer1, "");
+  const [count2, setCount2] = useReducer(reducer2, "");
+
+  return (
+    <>
+      <input onChange={(e) => setCount1({ action: "add", value: +e.target.value })} />
+
+      <input onChange={(e) => setCount2({ action: "add", value: +e.target.value })} />
+
+      <button
+        onClick={() => {
+          console.log(count1 + count2);
+        }}
+      >
+        click
+      </button>
+    </>
+  );
+}
+export default App;
