@@ -1522,38 +1522,133 @@ import Component from "./page/Component";
 // 5. Создайте компонент отслеживающий вводимое значение 2 input. Посчитать сумму 2 input.
 // По клику на кнопку отображать результат в консоль
 
-function reducer1(elem, param) {
-  switch (param.action) {
-    case "add":
-      return param.value;
-  }
-}
+// function reducer1(elem, param) {
+//   switch (param.action) {
+//     case "add":
+//       return param.value;
+//   }
+// }
 
-function reducer2(elem, param) {
-  switch (param.action) {
-    case "add":
-      return param.value;
-  }
-}
+// function reducer2(elem, param) {
+//   switch (param.action) {
+//     case "add":
+//       return param.value;
+//   }
+// }
 
-function App() {
-  const [count1, setCount1] = useReducer(reducer1, "");
-  const [count2, setCount2] = useReducer(reducer2, "");
+// function App() {
+//   const [count1, setCount1] = useReducer(reducer1, "");
+//   const [count2, setCount2] = useReducer(reducer2, "");
 
-  return (
-    <>
-      <input onChange={(e) => setCount1({ action: "add", value: +e.target.value })} />
+//   return (
+//     <>
+//       <input onChange={(e) => setCount1({ action: "add", value: +e.target.value })} />
 
-      <input onChange={(e) => setCount2({ action: "add", value: +e.target.value })} />
+//       <input onChange={(e) => setCount2({ action: "add", value: +e.target.value })} />
 
-      <button
-        onClick={() => {
-          console.log(count1 + count2);
-        }}
-      >
-        click
-      </button>
-    </>
-  );
-}
-export default App;
+//       <button
+//         onClick={() => {
+//           console.log(count1 + count2);
+//         }}
+//       >
+//         click
+//       </button>
+//     </>
+//   );
+// }
+// export default App;
+
+// Повторение:
+
+// 1. Создайте компонент простого калькулятора, который выполняет команды: +, -, *, /
+
+// function SimpleCalculator() {
+//   const [a, setA] = useState("");
+//   const [b, setB] = useState("");
+//   const [op, setOp] = useState("+");
+//   const [result, setResult] = useState("");
+
+//   const calculate = () => {
+//     const x = parseFloat(a);
+//     const y = parseFloat(b);
+//     let r = 0;
+
+//     if (op === "+") r = x + y;
+//     else if (op === "-") r = x - y;
+//     else if (op === "*") r = x * y;
+//     else if (op === "/") r = y !== 0 ? x / y : NaN;
+
+//     setResult(isNaN(r) ? "Error" : r.toString());
+//   };
+
+//   return (
+//     <div>
+//       <input value={a} onChange={(e) => setA(e.target.value)} placeholder="Число 1" />
+//       <select value={op} onChange={(e) => setOp(e.target.value)}>
+//         <option value="+">+</option>
+//         <option value="-">−</option>
+//         <option value="*">×</option>
+//         <option value="/">÷</option>
+//       </select>
+//       <input value={b} onChange={(e) => setB(e.target.value)} placeholder="Число 2" />
+//       <button onClick={calculate}>=</button>
+//       <div>Результат: {result}</div>
+//     </div>
+//   );
+// }
+// export default SimpleCalculator;
+
+// 2. Изменение размера шрифта с использованием useState: Создайте компонент, который
+// предоставляет две кнопки: "Увеличить" и "Уменьшить". При нажатии на эти кнопки
+// значение font-size изменяется соответствующим образом на +/– 1px.
+
+// function FontSize() {
+//   const [size, setSize] = useState("12px");
+//   return (
+//     <>
+//       <h2 style={{ fontSize: size }}>Text</h2>
+//       <button
+//         onClick={() => {
+//           setSize(parseInt(size) + 1 + "px");
+//         }}
+//       >
+//         Увеличить
+//       </button>
+//       <button
+//         onClick={() => {
+//           setSize(parseInt(size) - 1 + "px");
+//         }}
+//       >
+//         Уменьшить
+//       </button>
+//     </>
+//   );
+// }
+// export default FontSize;
+
+// 3. Сделайте счётчик от 1 до 5. Блокируйте кнопку, если предел достигнут. Пределы: 10, -10
+
+// function Counter() {
+//   const [count, setCount] = useState(1);
+
+//   const increment = () => {
+//     if (count < 10) setCount(count + 1);
+//   };
+
+//   const decrement = () => {
+//     if (count > -10) setCount(count - 1);
+//   };
+
+//   return (
+//     <div>
+//       <h2>Счётчик: {count}</h2>
+//       <button onClick={decrement} disabled={count <= -10}>
+//         −
+//       </button>
+//       <button onClick={increment} disabled={count >= 10}>
+//         +
+//       </button>
+//     </div>
+//   );
+// }
+// export default Counter;
